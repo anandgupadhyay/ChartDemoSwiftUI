@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import Charts
 struct BarChartDemo: View {
     let weekDays = Calendar.current.shortWeekdaySymbols
     let temprature = [32.5,30,29.4,28.8,27,25.4,25.2]
@@ -17,7 +17,19 @@ struct BarChartDemo: View {
                 Image(systemName: "globe")
                     .imageScale(.large)
                     .foregroundStyle(.tint)
-                Text("Hello, world!")
+                Text("Amazing Bar Chart Example for Weekly Weather Forceast!").multilineTextAlignment(.center)
+                Chart{
+                    ForEach(weekDays.indices,id: \.self){
+                        index in
+                        BarMark(
+                            x: .value("Day", weekDays[index]),
+                            y: .value("Temprature",temprature[index])
+                        ).foregroundStyle(by: .value("Day", weekDays[index]))
+                            .annotation{
+                                Text("\(temprature[index])")
+                            }
+                    }
+                }
             }
             .padding()               .navigationBarTitleDisplayMode(.inline)
                 .toolbar { // <2>
