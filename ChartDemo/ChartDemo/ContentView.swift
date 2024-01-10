@@ -14,7 +14,7 @@ struct BarChartDemo: View {
     var body: some View {
         NavigationView { // <1>
             VStack {
-                Image(systemName: "globe")
+                Image(systemName: "star")
                     .imageScale(.large)
                     .foregroundStyle(.tint)
                 Text("Amazing Bar Chart Example for Weekly Weather Forceast!").multilineTextAlignment(.center)
