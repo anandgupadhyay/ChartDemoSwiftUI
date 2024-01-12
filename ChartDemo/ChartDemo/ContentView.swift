@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Charts
+
 struct BarChartDemo: View {
     let weekDays = Calendar.current.shortWeekdaySymbols
     let temprature = [32.5,30,29.4,28.8,27,25.4,25.2]
