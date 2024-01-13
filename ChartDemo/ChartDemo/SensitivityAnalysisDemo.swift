@@ -72,13 +72,15 @@ struct SensitiveAnalysisView: View {
                 await checkSensitivity(imageName: imageName)
             }
         })
-//            .toolbar{
-//                Button("Puppy"){
-//                    Task{
-//                        imageName = "puppy"
-//                        await analyse(imageName:imageName)
-//                    }
-//                }
+        .toolbar{
+            Button("Deails"){
+                Task{
+                    
+                    
+                }
+            }
+            
+        }
 //                Button ("Ranveer"){
 //                    Task{
 //                        imageName = "ranveer"
