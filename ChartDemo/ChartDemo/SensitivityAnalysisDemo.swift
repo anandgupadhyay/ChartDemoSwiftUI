@@ -7,47 +7,95 @@
 //
 
 
+extension UIDevice {
+    static var isSimulator: Bool {
+            return TARGET_OS_SIMULATOR != 0
+        }
+
+//    var isSimulator: Bool {
+//        #if IOS_SIMULATOR
+//            return true
+//        #else
+//            return false
+//        #endif
+//    }
+}
+
 import Foundation
 import SwiftUI
 import SensitiveContentAnalysis
 
 struct SensitiveAnalysisView: View {
     @State var message: String = "Welcome to Sensitivity Test"
-    @State var blueRadius = 20
+    @State var blueRadius = UIDevice.isSimulator ? 100 : 0
     @State var imageName = "ranveer"
     var body: some View{
-        VStack{
-            Text(message).foregroundStyle(.orange)
+        List{
             Image(imageName, label: Text("Ranveer")).blur(radius: CGFloat(blueRadius))
-                .frame(width: 300, height:300, alignment: .center)
-                .task {
-//                    do {
-                         await analyse(imageName: imageName)
-//                    }
-//                    catch{
-//                        message = "Some Error"
-//                    }
-                }
-            
-        }.padding(10)
-            
-            .toolbar{
-                Button("Reload"){
-                    Task{
-                        imageName = "puppy"
-                        await analyse(imageName:imageName)
+                .frame(width: 200.0, height: 200.0)
+            VStack{
+                    HStack(spacing: 100) {
+                        
+                        Button {
+                            
+                        } label: {
+                            Text("Puppy")
+                                .font(.largeTitle)
+                        }.onTapGesture {
+                            Task {
+                                imageName = "puppy"
+                                await checkSensitivity(imageName: imageName)
+                            }
+                        }
+                        
+                        Button {
+                            
+                        } label: {
+                            Text("Ranveer")
+                                .font(.largeTitle)
+                        }.onTapGesture {
+                            Task {
+                                imageName = "ranveer"
+                                await checkSensitivity(imageName: imageName)
+                            }
+                        }
                     }
-                }
+                //            Text(message).foregroundStyle(.orange)
+                //            Image(imageName, label: Text("Ranveer")).blur(radius: CGFloat(blueRadius))
+                //            }
+                Text(message).foregroundStyle(.red).font(.title2)
+                    .padding(.bottom, 50)
+                
+            }.padding(10)
+        }.onAppear(perform: {
+            Task{
+                await checkSensitivity(imageName: imageName)
             }
+        })
+//            .toolbar{
+//                Button("Puppy"){
+//                    Task{
+//                        imageName = "puppy"
+//                        await analyse(imageName:imageName)
+//                    }
+//                }
+//                Button ("Ranveer"){
+//                    Task{
+//                        imageName = "ranveer"
+//                        await analyse(imageName:imageName)
+//                    }
+//                }
+//            }
 //            .onAppear{
 //                await analyse(imageName: imageName)
 //            }
     }
     
-    func analyse(imageName: String)async{
+    func checkSensitivity(imageName: String)async{
         let analyser = SCSensitivityAnalyzer()
         let policy = analyser.analysisPolicy
         if policy == .disabled{
+            print("Disabled")
             return
         }
         
@@ -57,7 +105,8 @@ struct SensitiveAnalysisView: View {
         
         //For Image
         do {
-            guard let sensitiveContentImage = UIImage(named: "ranveer") else{
+            guard let sensitiveContentImage = UIImage(named: imageName) else{
+                print("No Image")
                 return
             }
             
@@ -65,9 +114,11 @@ struct SensitiveAnalysisView: View {
             if response.isSensitive{
                 blueRadius = 100
                 message = "Sensitive Content \(imageName)"
+                print(message)
             }else{
                 blueRadius = 0
                 message = "Safe for Work \(imageName)"
+                print(message)
             }
             
         }catch{
