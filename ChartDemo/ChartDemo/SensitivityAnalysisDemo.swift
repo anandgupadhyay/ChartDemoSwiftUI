@@ -95,6 +95,18 @@ struct SensitiveAnalysisView: View {
         //                await analyse(imageName: imageName)
         //            }
     }
+    NavigationLink {
+        // destination view to navigation to
+        DetailView()
+    } label: {
+        VStack {
+            Image(systemName: "globe")
+                .imageScale(.large)
+                .foregroundColor(.accentColor)
+            Text("Hello, world!")
+        }
+        .padding()
+    }
 }
     
     func checkSensitivity(imageName: String)async{
@@ -156,6 +168,7 @@ struct DetailView: View {
         .onDisappear {
             print("DetailView disappeared!")
         }
+        .navigationTitle("Detail")
     }
 }
 
