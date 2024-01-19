@@ -30,36 +30,37 @@ struct SensitiveAnalysisView: View {
     @State var blueRadius = UIDevice.isSimulator ? 100 : 0
     @State var imageName = "ranveer"
     var body: some View{
+        NavigationView {
         List{
             Image(imageName, label: Text("Ranveer")).blur(radius: CGFloat(blueRadius))
                 .frame(width: 200.0, height: 200.0)
             VStack{
-                    HStack(spacing: 100) {
+                HStack(spacing: 100) {
+                    
+                    Button {
                         
-                        Button {
-                            
-                        } label: {
-                            Text("Puppy")
-                                .font(.largeTitle)
-                        }.onTapGesture {
-                            Task {
-                                imageName = "puppy"
-                                await checkSensitivity(imageName: imageName)
-                            }
-                        }
-                        
-                        Button {
-                            
-                        } label: {
-                            Text("Ranveer")
-                                .font(.largeTitle)
-                        }.onTapGesture {
-                            Task {
-                                imageName = "ranveer"
-                                await checkSensitivity(imageName: imageName)
-                            }
+                    } label: {
+                        Text("Puppy")
+                            .font(.largeTitle)
+                    }.onTapGesture {
+                        Task {
+                            imageName = "puppy"
+                            await checkSensitivity(imageName: imageName)
                         }
                     }
+                    
+                    Button {
+                        
+                    } label: {
+                        Text("Ranveer")
+                            .font(.largeTitle)
+                    }.onTapGesture {
+                        Task {
+                            imageName = "ranveer"
+                            await checkSensitivity(imageName: imageName)
+                        }
+                    }
+                }
                 //            Text(message).foregroundStyle(.orange)
                 //            Image(imageName, label: Text("Ranveer")).blur(radius: CGFloat(blueRadius))
                 //            }
@@ -74,24 +75,27 @@ struct SensitiveAnalysisView: View {
         })
         .toolbar{
             Button("Deails"){
-                Task{
-                    
-                    
-                }
+                //                    NavigationLink {
+//                DetailView()
+                //            } label: {
+                //                    Text("Hello World")
+                //            }
+                
             }
             
         }
-//                Button ("Ranveer"){
-//                    Task{
-//                        imageName = "ranveer"
-//                        await analyse(imageName:imageName)
-//                    }
-//                }
-//            }
-//            .onAppear{
-//                await analyse(imageName: imageName)
-//            }
+        //                Button ("Ranveer"){
+        //                    Task{
+        //                        imageName = "ranveer"
+        //                        await analyse(imageName:imageName)
+        //                    }
+        //                }
+        //            }
+        //            .onAppear{
+        //                await analyse(imageName: imageName)
+        //            }
     }
+}
     
     func checkSensitivity(imageName: String)async{
         let analyser = SCSensitivityAnalyzer()
