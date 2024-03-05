@@ -23,13 +23,13 @@ import AssetsLibrary
 //In order to donate views and modifiers to the Xcode library, we need make create a new object conforming to the [`LibraryContentProvider`][lcpDoc] protocol, which returns an array of library items.
 
 
-public protocol LibraryContentProvider {
-    @LibraryContentProvider
-    var views: [LibraryItem] { get }
-    
-    @LibraryContentProvider
-    func modifiers(base: ModifierBase) -> [LibraryItem]
-}
+//public protocol LibraryContentProvider {
+//    @LibraryContentProvider
+//    var views: [LibraryItem] { get }
+//    
+//    @LibraryContentProvider
+//    func modifiers(base: ModifierBase) -> [LibraryItem]
+//}
 
 
 //### Adding a Custom View
@@ -37,16 +37,16 @@ public protocol LibraryContentProvider {
 //We can add custom `View`s to the Xcode Library by implementing the [`views`][viewsDoc] property of the [`LibraryContentProvider`][lcpDoc] protocol:
 
 //```swift
-struct LibraryContent: LibraryContentProvider {
-@LibraryContentProvider
-var views: [LibraryItem] {
-LibraryItem (
-
-    SmoothieRowView(smoothie: .salak),
-            category: .control
-        )
-    }
-}
+//struct LibraryContent: LibraryContentProvider {
+//@LibraryContentProvider
+//var views: [LibraryItem] {
+//LibraryItem (
+//
+//    SmoothieRowView(smoothie: .salak),
+//            category: .control
+//        )
+//    }
+//}
 //```
 
 //Now we can conveniently reuse our `SmoothieRowView` view via the Xcode library.
@@ -66,30 +66,30 @@ LibraryItem (
 //Let's say that we have the following modifier for example:
 
 //```swift
-extension Image {
-    func resizedToFill(width: CGFloat, height: CGFloat) -> some View {
-        self
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: width, height: height)
-    }
-}
+//extension Image {
+//    func resizedToFill(width: CGFloat, height: CGFloat) -> some View {
+//        self
+//            .resizable()
+//            .aspectRatio(contentMode: .fill)
+//            .frame(width: width, height: height)
+//    }
+//}
 //```
 
 //We can add this custom `.resizedToFill` modifier to the Xcode Library by implementing the [`modifiers(base:)`][modDoc] of the [`LibraryContentProvider`][lcpDoc] protocol:
 
 //```swift
-struct LibraryContent: LibraryContentProvider {
-    @LibraryContentBuilder
-    func modifiers(base: Image) -> [LibraryItem] {
-        LibraryItem (
-            base.resizedToFill(width: 20, height: 20)
-        )
-    }
-}
+//struct LibraryContent: LibraryContentProvider {
+//    @LibraryContentBuilder
+//    func modifiers(base: Image) -> [LibraryItem] {
+//        LibraryItem (
+//            base.resizedToFill(width: 20, height: 20)
+//        )
+//    }
+//}
 //```
 
 
 
-/Now we can easily search the method name in your Xcode library.
+//Now we can easily search the method name in your Xcode library.
 
