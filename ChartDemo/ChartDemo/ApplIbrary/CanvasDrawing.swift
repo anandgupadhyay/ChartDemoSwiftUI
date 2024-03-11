@@ -41,16 +41,24 @@ struct WonderFile001: View {
     @State var animate: Bool = false
 
      func earShape() -> some View {
-        return ZStack {
-            GeometryReader { r in
-                Image("bunny", bundle: Bundle.main)
-                .resizable()
-                .frame(width: r.size.width, height: r.size.height)
-                .scaledToFit()
-                DrawingView()
-                    .frame(width: r.size.width, height: r.size.height)
+        return NavigationView {
+            ZStack {
+               GeometryReader { r in
+                   Image("bunny", bundle: Bundle.main)
+                   .resizable()
+                   .frame(width: r.size.width, height: r.size.height)
+                   .scaledToFit()
+                   DrawingView()
+                       .frame(width: r.size.width, height: r.size.height)
+               }
+               
+           }.offset(y:-40)
+           .navigationTitle("")
+           .toolbar {
+               Button("Add") {}
             }
-        }.offset(y:-40)
+            }
+         
     }
 
     var body: some View {
