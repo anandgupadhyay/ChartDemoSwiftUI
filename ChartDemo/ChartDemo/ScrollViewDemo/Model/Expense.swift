@@ -1,11 +1,4 @@
-//  /*
-//
-//  Project: ComplexScrollAnimations
-//  File: Expense.swift
-//  Created by: Elaidzha Shchukin
-//  Date: 06.11.2023
-//
-//  */
+
 
 import Foundation
 

@@ -1,9 +1,3 @@
-//
-//  Card.swift
-//  ComplexScrollAnimations
-//
-//  Created by Elaidzha Shchukin on 06.11.2023.
-//
 
 import SwiftUI
 

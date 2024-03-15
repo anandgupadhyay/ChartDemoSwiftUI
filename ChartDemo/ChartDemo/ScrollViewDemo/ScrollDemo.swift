@@ -1,9 +1,3 @@
-//
-//  ScrollDemo.swift
-//  ChartDemo
-//
-//  Created by Anand Upadhyay on 15/03/24.
-//
 
 import Foundation
 import SwiftUI
