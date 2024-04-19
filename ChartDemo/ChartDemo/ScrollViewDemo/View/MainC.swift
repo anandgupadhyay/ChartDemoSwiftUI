@@ -14,51 +14,7 @@ struct MainC: View {
         
         ScrollView(.vertical) {
             VStack(spacing: 0){
-                VStack(alignment: .leading, spacing: 50) {
-                    Text("Andew")
-                        .font(.system(size: 50, weight: .bold, design: .rounded))
-                        .frame(height: 30)
-                        .padding()
-                    
-                    GeometryReader {
-                        let rect = $0.frame(in: .scrollView)
-                        let minY = rect.minX.rounded()
-                        
-                        // MARK: Card View
-                        ScrollView(.horizontal) {
-                            LazyHStack(spacing: 0) {
-                                ForEach(cards) { card in
-                                    ZStack {
-                                        if minY == 75.0 {
-                                            // Not Scrolled
-                                            // Showing All Cards
-                                            CardView(card)
-                                        } else {
-                                            // Scrolled
-                                            // Showing Only Selected Card
-                                            if activeCard == card.id {
-                                                CardView(card)
-                                            } else {
-                                                Rectangle()
-                                                    .fill(.clear)
-                                            }
-                                        }
-                                    }
-                                    .containerRelativeFrame(.horizontal)
-                                }
-                            }
-                            .scrollTargetLayout()
-                        }
-                        .scrollPosition(id: $activeCard)
-                        .scrollTargetBehavior(.paging)
-                        .scrollClipDisabled()
-                        .scrollIndicators(.hidden)
-                        .scrollClipDisabled(minY != 75.0)
-                    }
-                    .frame(height: 120)
-                }
-                
-                LazyVStack(spacing: 15) {
+                LazyVStack(spacing: 5) {
                     Menu {
                         
                     } label: {
@@ -99,8 +55,53 @@ struct MainC: View {
                             }
                     }
                 )
+                
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("Andew")
+                        .foregroundColor(.red)
+                        .font(.system(size: 30, weight: .bold, design: .rounded))
+                        .frame(height: 50)
+                        .padding()
+                    
+                    GeometryReader {
+                        let rect = $0.frame(in: .scrollView)
+                        let minY = rect.minX.rounded()
+                        
+                        // MARK: Card View
+                        ScrollView(.horizontal) {
+                            LazyHStack(spacing: 0) {
+                                ForEach(cards) { card in
+                                    ZStack {
+                                        if minY == 75.0 {
+                                            // Not Scrolled
+                                            // Showing All Cards
+                                            CardView(card)
+                                        } else {
+                                            // Scrolled
+                                            // Showing Only Selected Card
+                                            if activeCard == card.id {
+                                                CardView(card)
+                                            } else {
+                                                Rectangle()
+                                                    .fill(.clear)
+                                            }
+                                        }
+                                    }
+                                    .containerRelativeFrame(.horizontal)
+                                }
+                            }
+                            .scrollTargetLayout()
+                        }
+                        .scrollPosition(id: $activeCard)
+                        .scrollTargetBehavior(.paging)
+                        .scrollClipDisabled()
+                        .scrollIndicators(.hidden)
+                        .scrollClipDisabled(minY != 75.0)
+                    }
+                    .frame(height: 50)
+                }
             }
-            .padding(.vertical, 15)
+            .padding(.vertical, 5)
         }
         .scrollTargetBehavior(CustomScrollBehavior())
         .scrollIndicators(.hidden)
@@ -120,7 +121,7 @@ struct MainC: View {
     func backgroundLimitOffset(_ proxy: GeometryProxy) -> CGFloat {
         let minY = proxy.frame(in: .scrollView).minY
         
-        return minY < 100 ? -minY + 100 : 0
+        return minY < 20 ? -minY + 20 : 0
     }
 
     // MARK: Card View

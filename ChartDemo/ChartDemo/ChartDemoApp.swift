@@ -13,7 +13,8 @@ struct ChartDemoApp: App {
         WindowGroup {
             //BarChartDemo()
             //SensitiveAnalysisView()
-            WonderFile001()
+//            WonderFile001()
+            ColorEffect()
         }
     }
 }

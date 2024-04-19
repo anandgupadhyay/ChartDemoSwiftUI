@@ -18,6 +18,7 @@
 		17609DF22B7242A500C332C0 /* AppLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17609DF12B7242A500C332C0 /* AppLibraryView.swift */; };
 		177A24362B603033005FBE36 /* FidgetSpiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177A24352B603033005FBE36 /* FidgetSpiner.swift */; };
 		17A941AC2B9590B000869076 /* CanvasDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A941AB2B9590B000869076 /* CanvasDrawing.swift */; };
+		17BBAFEC2BC6A07D0010BD99 /* AnimatedCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BBAFEB2BC6A07D0010BD99 /* AnimatedCircle.swift */; };
 		17C499002B515738009C1595 /* SensitivityAnalysisDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C498FF2B515738009C1595 /* SensitivityAnalysisDemo.swift */; };
 		17DE5C7A2B8AEFD900525C8B /* HelloAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE5C792B8AEFD900525C8B /* HelloAnimation.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		17609DF12B7242A500C332C0 /* AppLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLibraryView.swift; sourceTree = "<group>"; };
 		177A24352B603033005FBE36 /* FidgetSpiner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FidgetSpiner.swift; sourceTree = "<group>"; };
 		17A941AB2B9590B000869076 /* CanvasDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasDrawing.swift; sourceTree = "<group>"; };
+		17BBAFEB2BC6A07D0010BD99 /* AnimatedCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedCircle.swift; sourceTree = "<group>"; };
 		17C498FF2B515738009C1595 /* SensitivityAnalysisDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensitivityAnalysisDemo.swift; sourceTree = "<group>"; };
 		17DE5C792B8AEFD900525C8B /* HelloAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloAnimation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 		1709AC992B4BFB280016E1E3 /* ChartDemo */ = {
 			isa = PBXGroup;
 			children = (
+				17BBAFEA2BC69C000010BD99 /* AnimatingCircle */,
 				175A3E9D2BA42C3B00546C10 /* ScrollViewDemo */,
 				17609DF02B72428D00C332C0 /* ApplIbrary */,
 				177A24342B603020005FBE36 /* SwiftUIExample */,
@@ -134,6 +137,14 @@
 				177A24352B603033005FBE36 /* FidgetSpiner.swift */,
 			);
 			path = SwiftUIExample;
+			sourceTree = "<group>";
+		};
+		17BBAFEA2BC69C000010BD99 /* AnimatingCircle */ = {
+			isa = PBXGroup;
+			children = (
+				17BBAFEB2BC6A07D0010BD99 /* AnimatedCircle.swift */,
+			);
+			path = AnimatingCircle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +225,7 @@
 				17DE5C7A2B8AEFD900525C8B /* HelloAnimation.swift in Sources */,
 				1709AC9B2B4BFB280016E1E3 /* ChartDemoApp.swift in Sources */,
 				175A3EA82BA42CA400546C10 /* MainC.swift in Sources */,
+				17BBAFEC2BC6A07D0010BD99 /* AnimatedCircle.swift in Sources */,
 				175A3EA72BA42CA400546C10 /* Expense.swift in Sources */,
 				17609DF22B7242A500C332C0 /* AppLibraryView.swift in Sources */,
 				175A3EA62BA42CA400546C10 /* Card.swift in Sources */,
