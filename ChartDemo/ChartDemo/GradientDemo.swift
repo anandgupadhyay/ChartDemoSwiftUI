@@ -58,3 +58,35 @@ struct MeshGradient2: View {
         }
     }
 }
+
+//Usage
+enum MeshGradientType: String, CaseIterable {
+case simple
+case animate
+}
+
+struct MeshGradients: View {
+// MARK: - Properties
+@State private var gradientType:MeshGradientType = .simple
+
+// MARK: - Body
+var body: some View {
+ZStack(alignment: top) {
+
+switch gradientType {
+    case .simple:
+        MeshGradient1()
+    case •animate:
+        MeshGradient2()
+｝
+    
+Picker("",selection: SgradientType) {
+    ForEach (MeshGradientType.allCases, id: \.self) { option in
+        Text(option.rawValue)
+        •tag(option)
+｝
+｝
+•pickerStyle(•palette)
+•padding(.horizontal)
+.padding(.top)
+}
